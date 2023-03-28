@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.akash.sample.features.movies
+package com.akash.sample.features.stocks
 
 import com.akash.sample.AndroidTest
 import com.akash.sample.core.functional.Either.Right
@@ -24,22 +24,22 @@ import org.amshove.kluent.shouldEqualTo
 import org.junit.Before
 import org.junit.Test
 
-class MoviesViewModelTest : AndroidTest() {
+class stocksViewModelTest : AndroidTest() {
 
-    private lateinit var moviesViewModel: MoviesViewModel
+    private lateinit var stocksViewModel: stocksViewModel
 
-    @MockK private lateinit var getMovies: GetMovies
+    @MockK private lateinit var getstocks: Getstocks
 
     @Before
     fun setUp() {
-        moviesViewModel = MoviesViewModel(getMovies)
+        stocksViewModel = stocksViewModel(getstocks)
     }
 
-    @Test fun `loading movies should update live data`() {
-        val moviesList = listOf(Movie(0, "IronMan"), Movie(1, "Batman"))
-        coEvery { getMovies.run(any()) } returns Right(moviesList)
+    @Test fun `loading stocks should update live data`() {
+        val stocksList = listOf(stock(0, "IronMan"), stock(1, "Batman"))
+        coEvery { getstocks.run(any()) } returns Right(stocksList)
 
-        moviesViewModel.movies.observeForever {
+        stocksViewModel.stocks.observeForever {
             it!!.size shouldEqualTo 2
             it[0].id shouldEqualTo 0
             it[0].poster shouldEqualTo "IronMan"
@@ -47,6 +47,6 @@ class MoviesViewModelTest : AndroidTest() {
             it[1].poster shouldEqualTo "Batman"
         }
 
-        runBlocking { moviesViewModel.loadMovies() }
+        runBlocking { stocksViewModel.loadstocks() }
     }
 }

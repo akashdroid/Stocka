@@ -15,7 +15,7 @@
  */
 package com.akash.sample.core.functional
 
-import com.akash.sample.features.movies.StockDetailsView
+import com.akash.sample.features.stocks.StockDetailsView
 import kotlin.reflect.KFunction1
 
 /**

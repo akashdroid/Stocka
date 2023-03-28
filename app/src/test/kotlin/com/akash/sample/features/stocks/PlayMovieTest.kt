@@ -13,32 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.akash.sample.features.movies
+package com.akash.sample.features.stocks
 
-import com.akash.sample.UnitTest
-import com.akash.sample.core.functional.Either.Right
-import com.akash.sample.core.interactor.UseCase
-import io.mockk.every
+import com.akash.sample.AndroidTest
+import com.akash.sample.core.navigation.Navigator
 import io.mockk.impl.annotations.MockK
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetMoviesTest : UnitTest() {
+class PlaystockTest : AndroidTest() {
 
-    private lateinit var getMovies: GetMovies
+    private lateinit var playstock: Playstock
 
-    @MockK private lateinit var moviesRepository: MoviesRepository
+    private val context = context()
+
+    @MockK private lateinit var navigator: Navigator
 
     @Before fun setUp() {
-        getMovies = GetMovies(moviesRepository)
-        every { moviesRepository.movies() } returns Right(listOf(Movie.empty))
+        playstock = Playstock(context, navigator)
     }
 
-    @Test fun `should get data from repository`() {
-        runBlocking { getMovies.run(UseCase.None()) }
+    @Test fun `should play stock trailer`() {
+        val params = Playstock.Params(VIDEO_URL)
 
-        verify(exactly = 1) { moviesRepository.movies() }
+        runBlocking { playstock.run(params) }
+
+        verify(exactly = 1) { navigator.openVideo(context, VIDEO_URL) }
+    }
+
+    companion object {
+        private const val VIDEO_URL = "https://www.youtube.com/watch?v=fernando"
     }
 }

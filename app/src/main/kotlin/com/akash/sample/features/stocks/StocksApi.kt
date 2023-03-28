@@ -1,4 +1,4 @@
-package com.akash.sample.features.movies
+package com.akash.sample.features.stocks
 
 import retrofit2.Call
 import retrofit2.http.GET

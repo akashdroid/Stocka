@@ -21,6 +21,11 @@
     <style name="BaseToolbarStyle">
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:theme">@style/BaseToolbarTheme</item>
+        <item name="android:text">@string/stocks_screen_title</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/stock__text_size_14sp</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="titleTextAppearance">@style/CustomTitleTextAppearance</item>
     </style>
 
@@ -36,26 +41,26 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="MoviePoster">
+    <style name="stockPoster">
         <item name="android:layout_width">match_parent</item>
         <item name="android:scaleType">centerCrop</item>
-        <item name="android:transitionName">@string/movie_transition_poster</item>
+        <item name="android:transitionName">@string/stock_transition_poster</item>
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
-    <style name="MovieDetailsTitle">
+    <style name="stockDetailsTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorTextSecondary</item>
         <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:textSize">@dimen/movie_details_title</item>
+        <item name="android:textSize">@dimen/stock_details_title</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:paddingLeft">20dp</item>
     </style>
 
-    <style name="MovieDetailsText" parent="MovieDetailsTitle">
+    <style name="stockDetailsText" parent="stockDetailsTitle">
         <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:textSize">@dimen/movie_details_text</item>
+        <item name="android:textSize">@dimen/stock_details_text</item>
         <item name="android:paddingBottom">25dp</item>
         <item name="android:freezesText">true</item>
     </style>

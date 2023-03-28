@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.akash.sample.features.movies
+package com.akash.sample.features.stocks
 
 import com.akash.sample.AndroidTest
 import com.akash.sample.core.functional.Either.Right
@@ -24,24 +24,24 @@ import org.amshove.kluent.shouldEqualTo
 import org.junit.Before
 import org.junit.Test
 
-class MovieDetailsViewModelTest : AndroidTest() {
+class stockDetailsViewModelTest : AndroidTest() {
 
-    private lateinit var movieDetailsViewModel: MovieDetailsViewModel
+    private lateinit var stockDetailsViewModel: stockDetailsViewModel
 
-    @MockK private lateinit var getMovieDetails: GetMovieDetails
-    @MockK private lateinit var playMovie: PlayMovie
+    @MockK private lateinit var getstockDetails: GetstockDetails
+    @MockK private lateinit var playstock: Playstock
 
     @Before
     fun setUp() {
-        movieDetailsViewModel = MovieDetailsViewModel(getMovieDetails, playMovie)
+        stockDetailsViewModel = stockDetailsViewModel(getstockDetails, playstock)
     }
 
-    @Test fun `loading movie details should update live data`() {
-        val movieDetails = MovieDetails(0, "IronMan", "poster", "summary",
+    @Test fun `loading stock details should update live data`() {
+        val stockDetails = stockDetails(0, "IronMan", "poster", "summary",
                 "cast", "director", 2018, "trailer")
-        coEvery { getMovieDetails.run(any()) } returns Right(movieDetails)
+        coEvery { getstockDetails.run(any()) } returns Right(stockDetails)
 
-        movieDetailsViewModel.movieDetails.observeForever {
+        stockDetailsViewModel.stockDetails.observeForever {
             with(it!!) {
                 id shouldEqualTo 0
                 title shouldEqualTo "IronMan"
@@ -54,6 +54,6 @@ class MovieDetailsViewModelTest : AndroidTest() {
             }
         }
 
-        runBlocking { movieDetailsViewModel.loadMovieDetails(0) }
+        runBlocking { stockDetailsViewModel.loadstockDetails(0) }
     }
 }

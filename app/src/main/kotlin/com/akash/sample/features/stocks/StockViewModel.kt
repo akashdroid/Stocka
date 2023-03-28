@@ -1,4 +1,4 @@
-package com.akash.sample.features.movies
+package com.akash.sample.features.stocks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -48,7 +48,7 @@ class StockViewModel @Inject constructor(
             )
         }
     }
-
+// added this (stockId: Int) param just to demonstrate how to pass params for post Api
     fun loadStockDetails(stockId: Int) =
         getStockDetails(GetStockDetails.Params(stockId), viewModelScope) {
             it.fold(
@@ -71,4 +71,9 @@ class StockViewModel @Inject constructor(
         val data = stock.data
         _stockDetails.value = data
     }
+}
+
+
+enum class Status {
+    SUCCESS, ERROR, LOADING
 }

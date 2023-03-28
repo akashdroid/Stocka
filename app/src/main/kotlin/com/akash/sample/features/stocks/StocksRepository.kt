@@ -1,4 +1,4 @@
-package com.akash.sample.features.movies
+package com.akash.sample.features.stocks
 
 import android.util.Log
 import com.akash.sample.core.exception.Failure

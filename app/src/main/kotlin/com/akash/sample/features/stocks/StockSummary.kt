@@ -1,4 +1,4 @@
-package com.akash.sample.features.movies
+package com.akash.sample.features.stocks
 
 data class StockSummary(
     val currentValue: Double,

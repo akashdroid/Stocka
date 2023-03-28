@@ -17,8 +17,7 @@ package com.akash.sample.core.navigation
 
 import com.akash.sample.AndroidTest
 import com.akash.sample.features.login.Authenticator
-import com.akash.sample.features.login.LoginActivity
-import com.akash.sample.features.movies.StocksActivity
+import com.akash.sample.features.stocks.StocksActivity
 import com.akash.sample.shouldNavigateTo
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -45,7 +44,7 @@ class NavigatorTest : AndroidTest() {
         RouteActivity::class shouldNavigateTo LoginActivity::class
     }
 
-    @Test fun `should forward user to movies screen`() {
+    @Test fun `should forward user to stocks screen`() {
         every { authenticator.userLoggedIn() } returns true
 
         navigator.showMain(context())

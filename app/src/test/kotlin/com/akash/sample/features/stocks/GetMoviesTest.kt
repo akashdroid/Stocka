@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.akash.sample.features.movies
+package com.akash.sample.features.stocks
 
 import com.akash.sample.UnitTest
 import com.akash.sample.core.functional.Either.Right
+import com.akash.sample.core.interactor.UseCase
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.verify
@@ -24,24 +25,20 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class GetMovieDetailsTest : UnitTest() {
+class GetstocksTest : UnitTest() {
 
-    private lateinit var getMovieDetails: GetMovieDetails
+    private lateinit var getstocks: Getstocks
 
-    @MockK private lateinit var moviesRepository: MoviesRepository
+    @MockK private lateinit var stocksRepository: stocksRepository
 
     @Before fun setUp() {
-        getMovieDetails = GetMovieDetails(moviesRepository)
-        every { moviesRepository.movieDetails(MOVIE_ID) } returns Right(MovieDetails.empty)
+        getstocks = Getstocks(stocksRepository)
+        every { stocksRepository.stocks() } returns Right(listOf(stock.empty))
     }
 
     @Test fun `should get data from repository`() {
-        runBlocking { getMovieDetails.run(GetMovieDetails.Params(MOVIE_ID)) }
+        runBlocking { getstocks.run(UseCase.None()) }
 
-        verify(exactly = 1) { moviesRepository.movieDetails(MOVIE_ID) }
-    }
-
-    companion object {
-        private const val MOVIE_ID = 1
+        verify(exactly = 1) { stocksRepository.stocks() }
     }
 }

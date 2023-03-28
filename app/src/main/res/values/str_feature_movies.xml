@@ -1,11 +1,11 @@
 <resources>
-    <string name="movies_screen_title">Upstox Stocks</string>
-    <string name="movie_details_screen_title">Stocks Details</string>
-    <string name="movie_details_summary">Summary</string>
-    <string name="movie_details_cast">Cast</string>
-    <string name="movie_details_director">Director</string>
-    <string name="movie_details_year">Year</string>
+    <string name="stocks_screen_title">Upstox Holding</string>
+    <string name="stock_details_screen_title">Stocks Details</string>
+    <string name="stock_details_summary">Summary</string>
+    <string name="stock_details_cast">Cast</string>
+    <string name="stock_details_director">Director</string>
+    <string name="stock_details_year">Year</string>
 
     <!-- Animations -->
-    <string name="movie_transition_poster">stockPosterTransition</string>
+    <string name="stock_transition_poster">stockPosterTransition</string>
 </resources>

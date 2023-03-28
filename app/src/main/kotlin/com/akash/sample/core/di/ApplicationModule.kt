@@ -16,7 +16,7 @@
 package com.akash.sample.core.di
 
 import com.akash.sample.BuildConfig
-import com.akash.sample.features.movies.StocksRepository
+import com.akash.sample.features.stocks.StocksRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -53,5 +53,5 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideMoviesRepository(dataSource: StocksRepository.Network): StocksRepository = dataSource
+    fun providestocksRepository(dataSource: StocksRepository.Network): StocksRepository = dataSource
 }

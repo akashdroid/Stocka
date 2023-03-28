@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
   // Application Specific Plugins
   id(BuildPlugins.androidApplication)
@@ -23,13 +25,22 @@ android {
     versionCode = AndroidClient.versionCode
     versionName = AndroidClient.versionName
     testInstrumentationRunner = AndroidClient.testRunner
+
+
   }
+
+
 
   sourceSets {
     map { it.java.srcDir("src/${it.name}/kotlin") }
 
     //TODO: Remove this when migrating the DI framework
     getByName("main") { java.srcDir("$buildDir/generated/source/kapt/main") }
+  }
+
+  buildFeatures {
+    viewBinding = true
+    dataBinding= true
   }
 }
 

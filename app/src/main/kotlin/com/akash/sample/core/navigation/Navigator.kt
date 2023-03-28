@@ -15,18 +15,9 @@
  */
 package com.akash.sample.core.navigation
 
-import android.content.ActivityNotFoundException
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.view.View
-import android.widget.ImageView
-import androidx.core.app.ActivityOptionsCompat
-import androidx.fragment.app.FragmentActivity
-import com.akash.sample.core.extension.empty
 import com.akash.sample.features.login.Authenticator
-import com.akash.sample.features.login.LoginActivity
-import com.akash.sample.features.movies.StocksActivity
+import com.akash.sample.features.stocks.StocksActivity
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -35,13 +26,11 @@ import javax.inject.Singleton
 class Navigator
 @Inject constructor(private val authenticator: Authenticator) {
 
-    private fun showLogin(context: Context) =
-        context.startActivity(LoginActivity.callingIntent(context))
-
+    // can write other cases like login or something
     fun showMain(context: Context) {
         when (authenticator.userLoggedIn()) {
             true -> showStocks(context)
-            false -> showLogin(context)
+            //false -> showLogin(context)
         }
     }
 
