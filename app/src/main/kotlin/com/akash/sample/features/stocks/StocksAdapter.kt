@@ -22,8 +22,8 @@ class StocksAdapter : RecyclerView.Adapter<StocksViewHolder>() {
         return data.size
     }
 
-    fun setData(dataa: List<StockViewModel.StockUI>) {
-        this.data = dataa
+    fun setData(data: List<StockViewModel.StockUI>) {
+        this.data = data
         notifyDataSetChanged()
     }
 }
