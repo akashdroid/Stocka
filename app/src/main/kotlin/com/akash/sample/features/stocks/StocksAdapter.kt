@@ -1,6 +1,7 @@
 package com.akash.sample.features.stocks
 
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.akash.sample.R
 import com.akash.sample.core.extension.inflate
@@ -21,8 +22,8 @@ class StocksAdapter : RecyclerView.Adapter<StocksViewHolder>() {
         return data.size
     }
 
-    fun setData(data: List<StockViewModel.StockUI>) {
-        this.data = data
+    fun setData(dataa: List<StockViewModel.StockUI>) {
+        this.data = dataa
         notifyDataSetChanged()
     }
 }
