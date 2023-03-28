@@ -15,6 +15,7 @@
  */
 package com.akash.sample.core.platform
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -31,6 +32,7 @@ abstract class BaseViewModel : ViewModel() {
     val failure: LiveData<Failure> = _failure
 
     protected fun handleFailure(failure: Failure) {
+        Log.d("xzxzxzxz", "handleFailure: $failure")
         _failure.value = failure
     }
 }

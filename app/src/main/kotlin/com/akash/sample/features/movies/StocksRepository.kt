@@ -1,5 +1,6 @@
 package com.akash.sample.features.movies
 
+import android.util.Log
 import com.akash.sample.core.exception.Failure
 import com.akash.sample.core.functional.Either
 import com.akash.sample.core.platform.NetworkHandler
@@ -39,6 +40,7 @@ interface StocksRepository {
                     false -> Either.Left(Failure.ServerError)
                 }
             } catch (exception: Throwable) {
+                Log.d("xzxzxz", "request: $exception")
                 Either.Left(Failure.ServerError)
             }
         }
