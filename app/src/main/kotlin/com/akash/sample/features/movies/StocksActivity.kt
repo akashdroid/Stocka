@@ -23,9 +23,6 @@ class StocksActivity : BaseActivity(){
 
     }
 
-    override fun fragment(): BaseFragment {
-        TODO("Not yet implemented")
-    }
 
 
 }
