@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Fernando Cejas Open Source Project
+ * Copyright (C) 2020 akash Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fernandocejas.sample.core.interactor
+package com.akash.sample.core.interactor
 
-import com.fernandocejas.sample.AndroidTest
-import com.fernandocejas.sample.core.exception.Failure
-import com.fernandocejas.sample.core.functional.Either
-import com.fernandocejas.sample.core.functional.Either.Right
+import com.akash.sample.AndroidTest
+import com.akash.sample.core.functional.Either.Right
 import kotlinx.coroutines.runBlocking
 import org.amshove.kluent.shouldEqual
 import org.junit.Test

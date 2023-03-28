@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Fernando Cejas Open Source Project
+ * Copyright (C) 2020 akash Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fernandocejas.sample.core.interactor
+package com.akash.sample.core.interactor
 
-import com.fernandocejas.sample.core.exception.Failure
-import com.fernandocejas.sample.core.functional.Either
+import com.akash.sample.core.exception.Failure
+import com.akash.sample.core.functional.Either
 import kotlinx.coroutines.*
 
 /**

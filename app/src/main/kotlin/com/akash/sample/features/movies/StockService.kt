@@ -5,9 +5,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MoviesService
+class StockService
 @Inject constructor(retrofit: Retrofit) : StocksApi {
     private val stockApi by lazy { retrofit.create(StocksApi::class.java) }
 
-    override fun stockDetails(movieId: Int) = stockApi.stockDetails(movieId)
+    override fun stockDetails() = stockApi.stockDetails()
 }

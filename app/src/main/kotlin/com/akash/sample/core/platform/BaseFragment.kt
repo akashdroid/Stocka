@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Fernando Cejas Open Source Project
+ * Copyright (C) 2020 akash Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fernandocejas.sample.core.platform
+package com.akash.sample.core.platform
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,9 +22,9 @@ import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.fernandocejas.sample.R.color
-import com.fernandocejas.sample.core.extension.appContext
-import com.fernandocejas.sample.core.extension.viewContainer
+import com.akash.sample.R.color
+import com.akash.sample.core.extension.appContext
+import com.akash.sample.core.extension.viewContainer
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.toolbar.*

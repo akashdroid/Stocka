@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Fernando Cejas Open Source Project
+ * Copyright (C) 2020 akash Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 @file:Suppress("NOTHING_TO_INLINE", "EXTENSION_SHADOWED_BY_MEMBER")
 
-package com.fernandocejas.sample.core.platform
+package com.akash.sample.core.platform
 
 import android.os.Parcel
 import android.os.Parcelable

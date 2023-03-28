@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2019 Fernando Cejas Open Source Project
+ * Copyright (C) 2019 akash Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fernandocejas.sample.core.functional
+package com.akash.sample.core.functional
+
+import com.akash.sample.features.movies.StockDetailsView
+import kotlin.reflect.KFunction1
 
 /**
  * Represents a value of one of two possible types (a disjoint union).
@@ -24,12 +27,12 @@ package com.fernandocejas.sample.core.functional
  * @see Left
  * @see Right
  */
-sealed class Either<out L, out R> {
+sealed class Either<out L, out R : Any> {
     /** * Represents the left side of [Either] class which by convention is a "Failure". */
     data class Left<out L>(val a: L) : Either<L, Nothing>()
 
     /** * Represents the right side of [Either] class which by convention is a "Success". */
-    data class Right<out R>(val b: R) : Either<Nothing, R>()
+    data class Right<out R : Any>(val b: R) : Either<Nothing, R>()
 
     /**
      * Returns true if this is a Right, false otherwise.
@@ -54,7 +57,7 @@ sealed class Either<out L, out R> {
      * Creates a Left type.
      * @see Right
      */
-    fun <R> right(b: R) = Either.Right(b)
+    fun <R : Any> right(b: R) = Either.Right(b)
 
     /**
      * Applies fnL if this is a Left or fnR if this is a Right.
@@ -80,7 +83,7 @@ fun <A, B, C> ((A) -> B).c(f: (B) -> C): (A) -> C = {
  * Right-biased flatMap() FP convention which means that Right is assumed to be the default case
  * to operate on. If it is Left, operations like map, flatMap, ... return the Left value unchanged.
  */
-fun <T, L, R> Either<L, R>.flatMap(fn: (R) -> Either<L, T>): Either<L, T> =
+fun <T : Any, L, R : Any> Either<L, R>.flatMap(fn: (R) -> Either<L, T>): Either<L, T> =
     when (this) {
         is Either.Left -> Either.Left(a)
         is Either.Right -> fn(b)
@@ -90,12 +93,12 @@ fun <T, L, R> Either<L, R>.flatMap(fn: (R) -> Either<L, T>): Either<L, T> =
  * Right-biased map() FP convention which means that Right is assumed to be the default case
  * to operate on. If it is Left, operations like map, flatMap, ... return the Left value unchanged.
  */
-fun <T, L, R> Either<L, R>.map(fn: (R) -> (T)): Either<L, T> = this.flatMap(fn.c(::right))
+fun <T : Any, L, R : Any> Either<L, R>.map(fn: (R) -> (T)): Either<L, T> = this.flatMap(fn.c(::right))
 
 /** Returns the value from this `Right` or the given argument if this is a `Left`.
  *  Right(12).getOrElse(17) RETURNS 12 and Left(12).getOrElse(17) RETURNS 17
  */
-fun <L, R> Either<L, R>.getOrElse(value: R): R =
+fun <L, R : Any> Either<L, R>.getOrElse(value: R): R =
     when (this) {
         is Either.Left -> value
         is Either.Right -> b
@@ -106,7 +109,7 @@ fun <L, R> Either<L, R>.getOrElse(value: R): R =
  * the onFailure functionality passed as a parameter, but, overall will still return an either
  * object so you chain calls.
  */
-fun <L, R> Either<L, R>.onFailure(fn: (failure: L) -> Unit): Either<L, R> =
+fun <L, R : Any> Either<L, R>.onFailure(fn: (failure: L) -> Unit): Either<L, R> =
     this.apply { if (this is Either.Left) fn(a) }
 
 /**
@@ -114,5 +117,5 @@ fun <L, R> Either<L, R>.onFailure(fn: (failure: L) -> Unit): Either<L, R> =
  * the onSuccess functionality passed as a parameter, but, overall will still return an either
  * object so you chain calls.
  */
-fun <L, R> Either<L, R>.onSuccess(fn: (success: R) -> Unit): Either<L, R> =
+fun <L, R : Any> Either<L, R>.onSuccess(fn: (success: R) -> Unit): Either<L, R> =
     this.apply { if (this is Either.Right) fn(b) }

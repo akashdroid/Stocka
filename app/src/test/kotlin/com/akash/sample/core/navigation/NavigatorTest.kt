@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Fernando Cejas Open Source Project
+ * Copyright (C) 2020 akash Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fernandocejas.sample.core.navigation
+package com.akash.sample.core.navigation
 
-import com.fernandocejas.sample.AndroidTest
-import com.fernandocejas.sample.features.login.Authenticator
-import com.fernandocejas.sample.features.login.LoginActivity
-import com.fernandocejas.sample.features.movies.MoviesActivity
-import com.fernandocejas.sample.shouldNavigateTo
+import com.akash.sample.AndroidTest
+import com.akash.sample.features.login.Authenticator
+import com.akash.sample.features.login.LoginActivity
+import com.akash.sample.features.movies.StocksActivity
+import com.akash.sample.shouldNavigateTo
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.verify
@@ -51,6 +51,6 @@ class NavigatorTest : AndroidTest() {
         navigator.showMain(context())
 
         verify(exactly = 1) { authenticator.userLoggedIn() }
-        RouteActivity::class shouldNavigateTo MoviesActivity::class
+        RouteActivity::class shouldNavigateTo StocksActivity::class
     }
 }

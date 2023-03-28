@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Fernando Cejas Open Source Project
+ * Copyright (C) 2020 akash Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fernandocejas.sample.features.movies
+package com.akash.sample.features.movies
 
-import com.fernandocejas.sample.UnitTest
-import com.fernandocejas.sample.core.exception.Failure.NetworkConnection
-import com.fernandocejas.sample.core.exception.Failure.ServerError
-import com.fernandocejas.sample.core.extension.empty
-import com.fernandocejas.sample.core.functional.Either
-import com.fernandocejas.sample.core.functional.Either.Right
-import com.fernandocejas.sample.core.platform.NetworkHandler
-import com.fernandocejas.sample.features.movies.MoviesRepository.Network
+import com.akash.sample.UnitTest
+import com.akash.sample.core.exception.Failure.NetworkConnection
+import com.akash.sample.core.exception.Failure.ServerError
+import com.akash.sample.core.extension.empty
+import com.akash.sample.core.functional.Either
+import com.akash.sample.core.functional.Either.Right
+import com.akash.sample.core.platform.NetworkHandler
+import com.akash.sample.features.movies.MoviesRepository.Network
 import io.mockk.Called
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -39,7 +39,7 @@ class MoviesRepositoryTest : UnitTest() {
     private lateinit var networkRepository: MoviesRepository.Network
 
     @MockK private lateinit var networkHandler: NetworkHandler
-    @MockK private lateinit var service: MoviesService
+    @MockK private lateinit var service: StockService
 
     @MockK private lateinit var moviesCall: Call<List<MovieEntity>>
     @MockK private lateinit var moviesResponse: Response<List<MovieEntity>>

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2020 Fernando Cejas Open Source Project
+ * Copyright (C) 2020 akash Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fernandocejas.sample.core.di
+package com.akash.sample.core.di
 
-import com.fernandocejas.sample.BuildConfig
-import com.fernandocejas.sample.features.movies.MoviesRepository
+import com.akash.sample.BuildConfig
+import com.akash.sample.features.movies.StocksRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,7 +35,7 @@ class ApplicationModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture-Kotlin/")
+            .baseUrl("https://run.mocky.io")
             .client(createClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -53,5 +53,5 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideMoviesRepository(dataSource: MoviesRepository.Network): MoviesRepository = dataSource
+    fun provideMoviesRepository(dataSource: StocksRepository.Network): StocksRepository = dataSource
 }
