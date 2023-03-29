@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import com.akash.sample.core.extension.formatToRupee
 import com.akash.sample.core.platform.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -22,10 +23,10 @@ class StockViewModel @Inject constructor(
             val avgPrice = stockDetail.avgPrice.orEmpty().toDoubleOrNull() ?: 0.0
             val close = stockDetail.close ?: 0.0
 
-            val currentValue = ltp * quantity
-            val investmentValue = avgPrice * quantity
-            val pnl = currentValue - investmentValue
-            val pnlToday = close * quantity - currentValue
+            val currentValue = (ltp * quantity).formatToRupee()
+            val investmentValue = (avgPrice * quantity).formatToRupee()
+            val pnl = (currentValue - investmentValue).formatToRupee()
+            val pnlToday = (close * quantity - currentValue).formatToRupee()
             StockUI(
                 stockDetail.symbol.orEmpty(),
                 quantity,
@@ -41,10 +42,10 @@ class StockViewModel @Inject constructor(
     val stockSummary: LiveData<StockSummary> = stockDetails.map {
         it.fold(StockSummary(0.0, 0.0, 0.0, 0.0)) { initial: StockSummary, current: StockUI ->
             StockSummary(
-                initial.currentValue + current.currentValue,
-                initial.totalInvestment + current.investmentValue,
-                initial.pnl + current.pnl,
-                initial.pnlToday + current.pnlToday
+                (initial.currentValue + current.currentValue).formatToRupee(),
+                (initial.totalInvestment + current.investmentValue).formatToRupee(),
+                (initial.pnl + current.pnl).formatToRupee(),
+                (initial.pnlToday + current.pnlToday).formatToRupee()
             )
         }
     }
@@ -71,9 +72,4 @@ class StockViewModel @Inject constructor(
         val data = stock.data
         _stockDetails.value = data
     }
-}
-
-
-enum class Status {
-    SUCCESS, ERROR, LOADING
 }

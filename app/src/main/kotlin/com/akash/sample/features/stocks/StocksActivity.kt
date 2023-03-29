@@ -33,7 +33,7 @@ class StocksActivity : BaseActivity(){
         binding.stocksList.setDivider(R.drawable.recycler_view_divider_live_theme)
 
         stockViewModel.stockDetails.observe(this) {
-            adapter.setData(it)
+            adapter.data = (it)
         }
 
         stockViewModel.stockSummary.observe(this) {
