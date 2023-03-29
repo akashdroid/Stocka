@@ -3,7 +3,6 @@ package com.akash.sample.features.stocks
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.akash.sample.R
