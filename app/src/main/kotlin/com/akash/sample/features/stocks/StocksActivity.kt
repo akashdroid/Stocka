@@ -37,7 +37,6 @@ class StocksActivity : BaseActivity(){
         }
 
         stockViewModel.stockSummary.observe(this) {
-            Log.d("xzxzxzx", "onCreate: $it")
             binding.progressCircular.visibility = View.GONE
             binding.mtrlChildContentContainer.visibility = View.VISIBLE
             binding.currentValueAmt.text = "₹ ${it.currentValue}"
