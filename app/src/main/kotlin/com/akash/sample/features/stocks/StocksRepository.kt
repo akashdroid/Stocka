@@ -4,8 +4,8 @@ import android.util.Log
 import com.akash.sample.core.exception.Failure
 import com.akash.sample.core.functional.Either
 import com.akash.sample.core.platform.NetworkHandler
-import retrofit2.Call
 import javax.inject.Inject
+import retrofit2.Call
 
 interface StocksRepository {
     fun stockDetails(): Either<Failure, StockDetails>
@@ -13,7 +13,7 @@ interface StocksRepository {
     class Network
     @Inject constructor(
         private val networkHandler: NetworkHandler,
-        private val service: StockService
+        private val service: StockService,
     ) : StocksRepository {
 
 
@@ -21,7 +21,7 @@ interface StocksRepository {
             return when (networkHandler.isNetworkAvailable()) {
                 true -> request(
                     service.stockDetails(),
-                    {it},
+                    { it },
                     StockDetails("", ArrayList())
                 )
                 false -> Either.Left(Failure.NetworkConnection)
@@ -31,7 +31,7 @@ interface StocksRepository {
         private fun <T, R : Any> request(
             call: Call<T>,
             transform: (T) -> R,
-            default: T
+            default: T,
         ): Either<Failure, R> {
             return try {
                 val response = call.execute()

@@ -18,9 +18,8 @@ package com.akash.sample.core.platform
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.akash.sample.R
-import com.akash.sample.core.extension.inTransaction
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.toolbar.toolbar
 
 /**
  * Base Activity class with helper methods for handling fragment transactions and back button
@@ -35,21 +34,5 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_layout)
         setSupportActionBar(toolbar)
-       // addFragment(savedInstanceState)
     }
-
-   /* override fun onBackPressed() {
-        (supportFragmentManager.findFragmentById(R.id.fragmentContainer) as BaseFragment).onBackPressed()
-        super.onBackPressed()
-    }*/
-
-    /*private fun addFragment(savedInstanceState: Bundle?) =
-        savedInstanceState ?: supportFragmentManager.inTransaction {
-            add(
-                R.id.fragmentContainer,
-                fragment()
-            )
-        }*/
-
-   /* abstract fun fragment(): BaseFragment*/
 }

@@ -32,7 +32,6 @@ abstract class BaseViewModel : ViewModel() {
     val failure: LiveData<Failure> = _failure
 
     protected fun handleFailure(failure: Failure) {
-        Log.d("xzxzxzxz", "handleFailure: $failure")
         _failure.value = failure
     }
 }

@@ -30,7 +30,6 @@ class Navigator
     fun showMain(context: Context) {
         when (authenticator.userLoggedIn()) {
             true -> showStocks(context)
-            //false -> showLogin(context)
         }
     }
 

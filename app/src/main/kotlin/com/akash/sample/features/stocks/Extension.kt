@@ -1,6 +1,5 @@
 package com.akash.sample.features.stocks
 
-import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
